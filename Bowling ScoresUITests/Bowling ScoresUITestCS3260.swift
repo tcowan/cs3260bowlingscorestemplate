@@ -111,7 +111,7 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
         XCTAssert(seriesValue.exists, "No text field with identifier series found")
         
         XCTAssert(averageLabel.exists, "No Average Label found")
-        XCTAssert(averageValue.exists, "No text field with identifier ave found")
+        XCTAssert(averageValue.exists, "No text field with identifier average found")
         
         XCTAssert(highLabel.exists, "No High Label found")
         XCTAssert(highValue.exists, "No text field with identifier high found")
