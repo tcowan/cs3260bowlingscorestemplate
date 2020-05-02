@@ -17,21 +17,21 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
     var seriesLabel, highLabel, averageLabel: XCUIElement!
     var seriesValue, highValue, averageValue: XCUIElement!
     
-    let portraitSizes = ["Game 1" : (x:16.0, y:36.0, w:191.0, h:30.0), "game1" : (x:207.0, y:36.0, w:191.0, h:30.0),
-                         "Game 2" : (x:16.0, y:76.0, w:191.0, h:30.0), "game2" : (x:207.0, y:76.0, w:191.0, h:30.0),
-                         "Game 3" : (x:16.0, y:116.0, w:191.0, h:30.0), "game3" : (x:207.0, y:116.0, w:191.0, h:30.0),
-                         "Calculate" : (x:16.0, y:156.0, w:382.0, h:30.0),
-                         "Series" : (x:16.0, y:196.0, w:191.0, h:20.3), "series" : (x:207.0, y:196.0, w:191.0, h:20.3),
-                         "Average" : (x:16.0, y:257.7, w:191.0, h:20.3), "average" : (x:207.0, y:226.3, w:191.0, h:20.3),
-                         "High" : (x:16.0, y:156.0, w:191.0, h:20.3), "high" : (x:207.0, y:256.7, w:191.0, h:20.3) ]
+    let portraitSizes = ["Game 1" : (x:16.0, y:36.0, w:191.0, h:34.0), "game1" : (x:207.0, y:36.0, w:191.0, h:30.0),
+                         "Game 2" : (x:16.0, y:80.0, w:191.0, h:34.0), "game2" : (x:207.0, y:76.0, w:191.0, h:30.0),
+                         "Game 3" : (x:16.0, y:124.0, w:191.0, h:34.0), "game3" : (x:207.0, y:116.0, w:191.0, h:30.0),
+                         "Calculate" : (x:16.0, y:168.0, w:382.0, h:30.0),
+                         "Series" : (x:16.0, y:208.0, w:191.0, h:20.3), "series" : (x:207.0, y:208.0, w:191.0, h:20.3),
+                         "Average" : (x:16.0, y:238.3, w:191.0, h:20.3), "average" : (x:207.0, y:238.3, w:191.0, h:20.3),
+                         "High" : (x:16.0, y:268.7, w:191.0, h:20.3), "high" : (x:207.0, y:268.7, w:191.0, h:20.3) ]
     
     let landscapeLeftSizes = ["Game 1" : (x:16.0, y:16.0, w:352.0, h:30.0), "game1" : (x:368.0, y:16.0, w:352.0, h:30.0),
                               "Game 2" : (x:16.0, y:56.0, w:352.0, h:30.0), "game2" : (x:368.0, y:56.0, w:352.0, h:30.0),
                               "Game 3" : (x:16.0, y:96.0, w:352.0, h:30.0), "game3" : (x:368.0, y:96.0, w:352.0, h:30.0),
-                              "Calculate" : (x:16.0, y:136, w:704.0, h:30.0),
+                              "Calculate" : (x:16.0, y:148, w:704.0, h:30.0),
                               "Series" : (x:16.0, y:176.0, w:352.0, h:20.3), "series" : (x:368.0, y:176.0, w:352.0, h:20.3),
                               "Average" : (x:16.0, y:206.3, w:352.0, h:20.3), "average" : (x:368.0, y:206.3, w:352.0, h:20.3),
-                              "High" : (x:16.0, y:236.7, w:352.0, h:20.3), "high" : (x:368.0, y:236.7, w:352.0, h:20.3) ]
+                              "High" : (x:16.0, y:236.7, w:352.0, h:20.3), "high" : (x:368.0, y:248.7, w:352.0, h:20.3) ]
 
     override func setUp() {
         super.setUp()
@@ -129,17 +129,47 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
         XCTAssert(CGFloat(x).roundTo(1) == cX && CGFloat(y).roundTo(1) == cY.roundTo(1),
                   "Game 1 label found at (\(cX),\(cY)), should be at (\(x),\(y))")
         
+        cX = game2Label.frame.minX
+        cY = game2Label.frame.minY
+        (x, y, _, _) = portraitSizes["Game 2"]!
+        XCTAssert(CGFloat(x).roundTo(1) == cX && CGFloat(y).roundTo(1) == cY.roundTo(1),
+                  "Game 2 label found at (\(cX),\(cY)), should be at (\(x),\(y)), off by (\(Double(cX)-x), \(Double(cY)-y))")
+        
+        cX = game3Label.frame.minX
+        cY = game3Label.frame.minY
+        (x, y, _, _) = portraitSizes["Game 3"]!
+        XCTAssert(CGFloat(x).roundTo(1) == cX && CGFloat(y).roundTo(1) == cY.roundTo(1),
+                  "Game 3 label found at (\(cX),\(cY)), should be at (\(x),\(y)), off by (\(Double(cX)-x), \(Double(cY)-y))")
+        
         cX = calculateButton.frame.minX
         cY = calculateButton.frame.minY
         (x, y, _, _) = portraitSizes["Calculate"]!
         XCTAssert(CGFloat(x).roundTo(1) == cX.roundTo(1) && CGFloat(y).roundTo(1) == cY.roundTo(1),
-                  "Calculate button found at (\(cX),\(cY)), should be at (\(x),\(y))")
+                  "Calculate button found at (\(cX),\(cY)), should be at (\(x),\(y)), off by (\(Double(cX)-x), \(Double(cY)-y))")
+        
+        cX = seriesValue.frame.minX
+        cY = seriesValue.frame.minY
+        (x, y, _, _) = portraitSizes["series"]!
+        XCTAssert(CGFloat(x).roundTo(1) == cX.roundTo(1) && CGFloat(y).roundTo(1) == cY.roundTo(1),
+                  "series text field found at (\(cX.roundTo(1)),\(cY.roundTo(1))), should be at (\(x),\(y)), off by (\(Double(cX)-x), \(Double(cY)-y))")
+
+        cX = averageValue.frame.minX
+        cY = averageValue.frame.minY
+        (x, y, _, _) = portraitSizes["average"]!
+        XCTAssert(CGFloat(x).roundTo(1) == cX.roundTo(1) && CGFloat(y).roundTo(1) == cY.roundTo(1),
+                  "average value field found at (\(cX.roundTo(1)),\(cY.roundTo(1))), should be at (\(x),\(y)), off by (\(Double(cX)-x), \(Double(cY)-y))")
+
+        cX = highLabel.frame.minX
+        cY = highLabel.frame.minY
+        (x, y, _, _) = portraitSizes["High"]!
+        XCTAssert(CGFloat(x).roundTo(1) == cX.roundTo(1) && CGFloat(y).roundTo(1) == cY.roundTo(1),
+                  "High label found at (\(cX.roundTo(1)),\(cY.roundTo(1))), should be at (\(x),\(y)), off by (\(Double(cX)-x), \(Double(cY)-y))")
         
         cX = highValue.frame.minX
         cY = highValue.frame.minY
         (x, y, _, _) = portraitSizes["high"]!
         XCTAssert(CGFloat(x).roundTo(1) == cX.roundTo(1) && CGFloat(y).roundTo(1) == cY.roundTo(1),
-                  "high text field found at (\(cX.roundTo(1)),\(cY.roundTo(1))), should be at (\(x),\(y))")
+                  "high value field found at (\(cX.roundTo(1)),\(cY.roundTo(1))), should be at (\(x),\(y)), off by (\(Double(cX)-x), \(Double(cY)-y))")
     }
     
     func testLandscapeLeftMode() {
@@ -163,7 +193,7 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
         cY = highValue.frame.minY
         (x, y, _, _) = landscapeLeftSizes["high"]!
         XCTAssert(CGFloat(x).roundTo(1) == cX.roundTo(1) && CGFloat(y).roundTo(1) == cY.roundTo(1),
-                  "high text field found at (\(cX.roundTo(1)),\(cY.roundTo(1))), should be at (\(x),\(y))")
+                  "high value found at (\(cX.roundTo(1)),\(cY.roundTo(1))), should be at (\(x),\(y))")
 
     }
     
@@ -202,7 +232,8 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
     func testZero100100() {
         game1Value.tap()
         game1Value.typeText("0")
-        
+        sleep(1)
+
         game2Value.tap()
         game2Value.typeText("100")
         
