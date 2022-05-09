@@ -179,12 +179,15 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
     
     func testNonAlphaEntries() {
         game1Value.tap()
+        sleep(1)
         game1Value.typeText("mickey")
         
         game2Value.tap()
+        sleep(1)
         game2Value.typeText("donald")
         
         game3Value.tap()
+        sleep(1)
         game3Value.typeText("minnie")
         app.buttons["calculate"].tap()
         
@@ -195,12 +198,15 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
     
     func testIntegerMathRoundingDown() {
         game1Value.tap()
+        sleep(1)
         game1Value.typeText("101")
         
         game2Value.tap()
+        sleep(1)
         game2Value.typeText("105")
         
         game3Value.tap()
+        sleep(1)
         game3Value.typeText("107")
         app.buttons["calculate"].tap()
         
@@ -211,12 +217,15 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
     
     func testIntegerMathNotRoundingUp() {
         game1Value.tap()
+        sleep(1)
         game1Value.typeText("105")
         
         game2Value.tap()
+        sleep(1)
         game2Value.typeText("105")
         
         game3Value.tap()
+        sleep(1)
         game3Value.typeText("107")
         app.buttons["calculate"].tap()
         
