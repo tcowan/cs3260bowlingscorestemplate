@@ -104,14 +104,20 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
         
     func testBasicCalculations() {
         game1Value.tap()
+        sleep(1)
         game1Value.typeText("100")
-        
+
         game2Value.tap()
+        sleep(1)
         game2Value.typeText("200")
-        
+
         game3Value.tap()
-        game3Value.typeText("300")
+        sleep(1)
+        game3Value.typeText("300") 
+               
         app.buttons["calculate"].tap()
+        sleep(1)
+
         /*
         XCTAssertEqual(seriesValue.value as! String, "600", "Series does not equal 600")
         XCTAssertEqual(averageValue.value as! String, "200", "Average does not equal 200")
