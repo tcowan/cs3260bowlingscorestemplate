@@ -128,7 +128,8 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
         game3Value.tap()
         game3Value.typeText("0")
         app.buttons["calculate"].tap()
-        
+        sleep(3)
+    
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "series").value as! String, "0")
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "average").value as! String, "0")
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "high").value as! String, "0")
