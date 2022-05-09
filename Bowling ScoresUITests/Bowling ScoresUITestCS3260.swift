@@ -139,15 +139,18 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
     
     func testAllZeroes() {
         game1Value.tap()
+        sleep(1)
         game1Value.typeText("0")
         
         game2Value.tap()
+        sleep(1)
         game2Value.typeText("0")
         
         game3Value.tap()
+        sleep(1)
         game3Value.typeText("0")
         app.buttons["calculate"].tap()
-        sleep(3)
+        sleep(1)
     
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "series").value as! String, "0")
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "average").value as! String, "0")
@@ -156,16 +159,19 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
     
     func testZero100100() {
         game1Value.tap()
-        game1Value.typeText("0")
         sleep(1)
+        game1Value.typeText("0")
 
         game2Value.tap()
+        sleep(1)
         game2Value.typeText("100")
         
         game3Value.tap()
+        sleep(1)
         game3Value.typeText("100")
         app.buttons["calculate"].tap()
-        
+        sleep(1)
+
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "series").value as! String, "200")
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "average").value as! String, "100")
         XCTAssertEqual(app.staticTexts.element(matching:.any, identifier: "high").value as! String, "100")
