@@ -106,6 +106,7 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
         game1Value.tap()
         sleep(1)
         game1Value.typeText("100")
+        XCTAssertEqual(game1Value.value as! String, "100")
 
         game2Value.tap()
         sleep(1)
@@ -114,7 +115,7 @@ class Bowling_ScoresUITestCS3260: XCTestCase {
         game3Value.tap()
         sleep(1)
         game3Value.typeText("300") 
-               
+
         app.buttons["calculate"].tap()
         sleep(1)
 
